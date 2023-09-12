@@ -1,27 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QAQC Calculator</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <img class="cibs" src="https://cibsprecast.com/images/00CIBS/logo/logo.jpg" alt="cibs" width=100px>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Raleway:ital@1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <img
+      class="cibs"
+      src="https://cibsprecast.com/images/00CIBS/logo/logo.jpg"
+      alt="cibs"
+      width="100px"
+    />
     <h1>Cosine Law Calculator</h1>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Rtriangle.svg/1200px-Rtriangle.svg.png"
-    alt="triangle" width="200px">
+    <img
+      class="triangle"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Rtriangle.svg/1200px-Rtriangle.svg.png"
+      alt="triangle"
+      width="200px"
+    />
 
     <div class="input-container">
-        <label for="sideA">Side A: (Side Wall)</label>
-        <input type="number" id="sideA" placeholder="Enter side A length"><br>
-        <label for="sideB">Side B: (Slab Length)</label>
-        <input type="number" id="sideB" placeholder="Enter side B length"><br>
-        <label for="sideC">Side C: (End to End from Side Wall to Slab)</label>
-        <input type="number" id="sideC" placeholder="Enter side C length"><br>
-        <button id="calculate">Calculate Angle</button>
+      <label for="sideA">Side A: (Side Wall)</label>
+      <input type="number" id="sideA" placeholder="Enter side A length" /><br />
+      <label for="sideB">Side B: (Slab Length)</label>
+      <input type="number" id="sideB" placeholder="Enter side B length" /><br />
+      <label for="sideC">Side C: (End to End from Side Wall to Slab)</label>
+      <input type="number" id="sideC" placeholder="Enter side C length" /><br />
+      <button id="calculate">Calculate Angle</button>
     </div>
     <div id="result"></div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
