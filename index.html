@@ -19,6 +19,10 @@
       alt="cibs"
       width="100px"
     />
+
+    <br />
+    <br />
+
     <h1>Cosine Law Calculator</h1>
     <img
       class="triangle"
@@ -26,6 +30,9 @@
       alt="triangle"
       width="200px"
     />
+    <br />
+
+    <img class="gamma" src="/image/gamma.png" alt="gamma" />
 
     <div class="input-container">
       <label for="sideA">Side A: (Side Wall)</label>
@@ -33,10 +40,46 @@
       <label for="sideB">Side B: (Slab Length)</label>
       <input type="number" id="sideB" placeholder="Enter side B length" /><br />
       <label for="sideC">Side C: (End to End from Side Wall to Slab)</label>
-      <input type="number" id="sideC" placeholder="Enter side C length" /><br />
+      <input type="number" id="sideC" placeholder="Enter side C length" />
+      <div id="result"></div>
+      <br />
       <button id="calculate">Calculate Angle</button>
     </div>
-    <div id="result"></div>
+
+    <img src="/image/acute.png" alt="acute" width="200px" />
+
+    <form id="sineLawForm">
+      <label for="angleA">Angle γ (in degrees):</label>
+      <input
+        type="number"
+        step="0.01"
+        placeholder="Angle Answered - 90"
+        id="angleA"
+        required
+      /><br /><br />
+
+      <label for="angleB">Angle 𝑎 (in degrees):</label>
+      <input
+        type="number"
+        step="0.01"
+        placeholder="180 - 90 - γ "
+        id="angleB"
+        required
+      /><br /><br />
+
+      <label for="providedSide">Provided Side Length (Actual Length):</label>
+      <input
+        type="number"
+        step="0.01"
+        placeholder="2775"
+        id="providedSide"
+        required
+      />
+      <p id="resultacute"></p>
+
+      <input id="sinus" type="submit" value="Calculate Length" />
+    </form>
+
     <script src="script.js"></script>
   </body>
 </html>

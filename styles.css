@@ -9,7 +9,7 @@ h1 {
   color: #333;
 }
 
-.input-container {
+.input-container, .result-container, #sineLawForm {
   background: #fff;
   padding: 10px;
   margin: 20px auto;
@@ -26,20 +26,22 @@ label, input {
   margin: 10px 10px;
 }
 
-button {
+button, #sinus {
   margin: 0 80px 20px 75px;
   background-color: #007BFF;
   color: #fff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
+  border-radius: 5px
 }
 
-button:hover {
+button:hover{
   background-color: #0056b3;
+  ;
 }
 
-#result {
+#result, #resultacute {
   margin-top: 20px;
   right: 200px;
   font-weight: bold;
@@ -55,4 +57,10 @@ button:hover {
 .cibs{
   mix-blend-mode: darken;
  
+}
+
+.gamma {
+  margin: 20px;
+  margin-left: 40px ;
+  box-shadow: 0px 0px 2px 1px #131212;
 }
