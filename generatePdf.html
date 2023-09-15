@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Right Angle Module Report</title>
+    <link rel="stylesheet" href="stylesPDF.css" />
+    <link rel="stylesheet" href="styleforPDF.css" />
+  </head>
+  <body>
+    <header>
+      <div class="headerSection">
+        <div class="logoAndName">
+          <img
+            class="cibs"
+            src="https://cibsprecast.com/images/00CIBS/logo/logo.jpg"
+            alt="cibs"
+            width="100px"
+            style="mix-blend-mode: darken"
+          />
+          <h1>Right Angle Module Report</h1>
+        </div>
+        <div class="invoiceDetails"></div>
+      </div>
+      <hr />
+      <div class="headerSection">
+        <div>
+          <label for="Marking">Marking: </label>
+          <input type="text" id="MarkingInput" class="blended-input" placeholder="Type here..." />
+        </div>
+        <div>
+          <label for="MouldNumber">Mould Number:</label>
+          <input type="text" id="MouldNumberInput" class="blended-input" placeholder="Type here..." />
+        </div>
+        <div>
+          <label for="InspectionDate">Inspection Date:</label>
+          <p id="currentDateTime" style="font-weight: bold ;display: inline;"></p>
+    </header>
+
+    <!-- The footer contains the company's website and address. To align the address details we will use flexbox in the CSS style. -->
+    
+
+    <!-- In the main section the table for the separate items is added. Also we add another table for the summary, so subtotal, tax and total amount. -->
+    <main>
+      <table>
+        <!-- A THEAD element is used to ensure the header of the table is repeated if it consumes more than one page. -->
+        <thead>
+          <tr>
+            <th>Item Description</th>
+            <th>Rate</th>
+            <th>Amount</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <!-- The single invoice items are all within the TBODY of the table. -->
+        <tbody>
+          <tr>
+            <td>
+              <b>Item Names Goes Here</b>
+              <br />
+              Description goes here
+            </td>
+            <td>$100</td>
+            <td>4</td>
+            <td>$400.00</td>
+          </tr>
+          <tr>
+            <td>
+              <b>Lorem Ipsum</b>
+              <br />
+              Description goes here
+            </td>
+            <td>$250</td>
+            <td>2</td>
+            <td>$500.00</td>
+          </tr>
+          <tr>
+            <td>
+              <b>Dolor Set Amit Caslum</b>
+              <br />
+              Description goes here
+            </td>
+            <td>$300</td>
+            <td>1</td>
+            <td>$300.00</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- The summary table contains the subtotal, tax and total amount. -->
+      <table class="summary">
+        <tr>
+          <th>Subtotal</th>
+          <td>$1200.00</td>
+        </tr>
+        <tr>
+          <th>Tax 4.7%</th>
+          <td>$000.00</td>
+        </tr>
+        <tr class="total">
+          <th>Total</th>
+          <td>$12,000.00</td>
+        </tr>
+      </table>
+    </main>
+    <!-- Within the aside tag we will put the terms and conditions which shall be shown below the invoice table. -->
+    <aside>
+      <!-- Before the terms and conditions we will add another blue divider line with the help of the HR tag. -->
+      <hr />
+      <div>
+        <div>
+          <b>Terms &amp; Conditions</b>
+          <p>Please make payment within 30 days of issue of the invoice.</p>
+        </div>
+        <div>
+          <b>Payment Options</b>
+          <ul>
+            <li>Paypal</li>
+            <li>Credit Card</li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+    <footer>
+      <a href="https://companywebsite.com"> companywebsite.com </a>
+      <a href="mailto:company@website.com"> company@website.com </a>
+      <span> 317.123.8765 </span>
+      <span> 123 Alphabet Road, Suite 01, Indianapolis, IN 46260 </span>
+    </footer>
+    <script src="scriptPDF.js"></script>
+  </body>
+</html>
