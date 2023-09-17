@@ -12,6 +12,8 @@
       rel="stylesheet"
     />
   </head>
+
+  
   <body>
     <img
       class="cibs"
@@ -42,17 +44,22 @@
 
     <img class="gamma" src="/image/gamma.png" alt="gamma" />
 
-    <div class="input-container">
-      <label for="sideA">Side A: (Side Wall)</label>
-      <input type="number" id="sideA" placeholder="Enter side A length" /><br />
-      <label for="sideB">Side B: (Slab Length)</label>
-      <input type="number" id="sideB" placeholder="Enter side B length" /><br />
-      <label for="sideC">Side C: (End to End from Side Wall to Slab)</label>
-      <input type="number" id="sideC" placeholder="Enter side C length" />
-      <p id="result"></p>
-      <br />
-      <button id="calculate">Calculate Angle</button>
-    </div>
+    <div class="triangle" id="triangleDiagram">
+      <!-- Triangle diagram will be inserted here using JavaScript -->
+  </div>
+
+  
+    <div class="calculator">
+     
+      <label for="sideA">Side a (Adjacent):</label>
+      <input type="number" id="sideA" placeholder="Enter side a length" oninput="updateDiagram()">
+      <label for="sideB">Side b (Opposite):</label>
+      <input type="number" id="sideB" placeholder="Enter side b length" oninput="updateDiagram()">
+      <label for="sideC">Hypotenuse (Side c):</label>
+      <input type="number" id="sideC" placeholder="Enter hypotenuse length" oninput="updateDiagram()">
+      <button onclick="calculate()">Calculate</button>
+      <p>Angle C ≈ <span id="result"></span></p>
+  </div>
 
     <img src="/image/acute.png" alt="acute" width="200px" /><br />
     <img class="gamma" src="/image/sine rule.png" alt="sine" />
@@ -66,7 +73,7 @@
         placeholder="Angle Answered - 90"
         id="angleA"
         required
-      /><button id="recallResultButton">Get Value γ</button>
+      />
 
       <br /><br />
 
@@ -91,12 +98,51 @@
 
       <input id="sinus" type="submit" value="Calculate Length" />
     </form>
+      <script>
+        document
+  .getElementById("sineLawForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
+    const angleA = parseFloat(document.getElementById("angleA").value);
+    const angleB = parseFloat(document.getElementById("angleB").value);
+    const providedSide = parseFloat(
+      document.getElementById("providedSide").value
+    );
+
+    if (!isNaN(angleA) && !isNaN(angleB) && !isNaN(providedSide)) {
+      const angleASin = Math.sin((angleA * Math.PI) / 180);
+      const angleBSin = Math.sin((angleB * Math.PI) / 180);
+      const calculatedResult = providedSide * (angleASin / angleBSin);
+
+      const threshold = 3;
+
+      if (calculatedResult < threshold) {
+        const predefinedSolution = 8.56;
+        document.getElementById(
+          "result"
+        ).textContent = `Slanted length: ${calculatedResult.toFixed(
+          2
+        )}mm (Acceptable)`;
+      } else {
+        document.getElementById(
+          "resultacute"
+        ).textContent = `Slanted length: ${calculatedResult.toFixed(
+          2
+        )}mm (Not Acceptable)`;
+      }
+    } else {
+      document.getElementById("resultacute").textContent =
+        "Please enter valid numbers for Angle A, Angle B, and Provided Side Length.";
+    }
+  });
+
+      </script>
     <button id="generatePdfButton">Generate PDF</button>
 
     <script></script>
 
-    <footer>&copy; Hak Cipta Terpelihara by MAT TAHAN 2023</footer>
+    <footer>&copy; Copyright by MAT TAHAN 2023</footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
     <script src="script.js"></script>
   </body>

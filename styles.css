@@ -9,7 +9,7 @@ h1 {
   color: #333;
 }
 
-.input-container, .result-container, #sineLawForm {
+div.calculator, .result-container, #sineLawForm {
   background: #fff;
   padding: 10px;
   margin: 20px auto;
@@ -19,6 +19,26 @@ h1 {
   border-radius: 5px;
   box-shadow: 0px 0px 2px 1px #131212;
   
+}
+
+.triangle {
+  width: 100%;
+  max-width: 300px; /* Set a max width for the triangle */
+  margin: 20px auto;
+}
+
+.triangle svg {
+  width: 100%;
+  height: auto;
+}
+
+.side {
+  stroke: #017340;
+  fill: transparent;
+}
+
+.side.highlighted {
+  stroke: #000000; /* Change the color for highlighted sides */
 }
 
 label, input, #recallResultButton {
@@ -37,10 +57,13 @@ button, #sinus {
 }
 
 button:hover{
-  background-color: #0056b3;
+  background-color: #bdcbda;
   ;
 }
-
+#sinus:hover{
+  background-color: #bdcbda;
+  ;
+}
 #result, #resultacute {
   margin-top: 20px;
   right: 200px;

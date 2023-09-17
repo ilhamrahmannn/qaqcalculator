@@ -1,11 +1,7 @@
-/* 
-Import the desired font from Google fonts. 
-*/
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
-/* 
-Define all colors used in this template 
-*/
+
 :root{
   --font-color: black;
   --highlight-color: #017340;
@@ -24,6 +20,13 @@ label.marking {
     align-items: center; 
     
 
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
 }
 
 #currentDateTime {
@@ -48,21 +51,12 @@ input.blended-input {
 
 }
 
-/* Style the container div with a background color */
 .container {
     background-color: #333; /* Set the background color of the container */
     padding: 20px; /* Add padding for spacing around the input element */
 }
 @page{
-  /*
-  This CSS highlights how page sizes, margins, and margin boxes are set.
-  https://docraptor.com/documentation/article/1067959-size-dimensions-orientation
 
-  Within the page margin boxes content from running elements is used instead of a 
-  standard content string. The name which is passed in the element() function can
-  be found in the CSS code below in a position property and is defined there by 
-  the running() function.
-  */
   size:A4;
   margin:8cm 0 3cm 0;
 
@@ -75,32 +69,21 @@ input.blended-input {
   }
 }
 
-/* 
-The body itself has no margin but a padding top & bottom 1cm and left & right 2cm.
-Additionally the default font family, size and color for the document is defined
-here.
-*/
 body{
   margin:0;
   padding:1cm 2cm;
   color:var(--font-color);
   font-family: 'Montserrat', sans-serif;
   font-size:10pt;
+  
 }
 
-/*
-The links in the document should not be highlighted by an different color and underline
-instead we use the color value inherit to get the current texts color.
-*/
 a{
   color:inherit;
   text-decoration:none;
 }
 
-/*
-For the dividers in the document we use an HR element with a margin top and bottom 
-of 1cm, no height and only a border top of one millimeter.
-*/
+
 hr{
   margin:1cm 0;
   height:0;
@@ -108,17 +91,6 @@ hr{
   border-top:1mm solid var(--highlight-color);
 }
 
-/*
-The page header in our document uses the HTML HEADER element, we define a height 
-of 8cm matching the margin top of the page (see @page rule) and a padding left
-and right of 2cm. We did not give the page itself a margin of 2cm to ensure that
-the background color goes to the edges of the document.
-
-As mentioned above in the comment for the @page the position property with the 
-value running(header) makes this HTML element float into the top left page margin
-box. This page margin box repeats on every page in case we would have a multi-page
-invoice.
-*/
 header{
   height:7cm;
   padding:0 2cm;
@@ -126,19 +98,13 @@ header{
   background-color:var(--header-bg-color);
 }
 
-/*
-For the different sections in the header we use some flexbox and keep space between
-with the justify-content property.
-*/
+
 header .headerSection{
   display:flex;
   justify-content:space-between;
 }
 
-/*
-To move the first sections a little down and have more space between the top of 
-the document and the logo/company name we give the section a padding top of 5mm.
-*/
+
 header .headerSection:first-child{
   padding-top:.5cm;
 }
@@ -339,70 +305,17 @@ As only the highlight background color should go to the edge of the document
 but the text should still have the 2cm distance, we set the padding right to 
 2cm.
 */
-main table.summary td{
-  padding:4mm 2cm 4mm 0;
-  border-bottom:0;
-}
 
-/*
-The content below the tables is placed in a ASIDE element next to the MAIN element.
-To ensure this element is always at the bottom of the page, just above the page 
-footer, we use the Prince custom property "-prince-float" with the value bottom.
-
-See Page Floats on https://www.princexml.com/howcome/2021/guides/float/.
-*/
-aside{
-  -prince-float: bottom;
-  padding:0 2cm .5cm 2cm;
-}
-
-/*
-The content itself is shown in 2 columns we use flexbox for this.
-*/
-aside > div{
-  display:flex;
-  justify-content:space-between;
-}
-
-/*
-Each "column" has a width of 45% of the document.
-*/
-aside > div > div{
-  width:45%;
-}
-
-/*
-The list with the payment options has no bullet points and no margin.
-*/
-aside > div > div ul{
-  list-style-type:none;
-  margin:0;
-}
-
-/*
-The page footer in our document uses the HTML FOOTER element, we define a height 
-of 3cm matching the margin bottom of the page (see @page rule) and a padding left
-and right of 2cm. We did not give the page itself a margin of 2cm to ensure that
-the background color goes to the edges of the document.
-
-As mentioned above in the comment for the @page the position property with the 
-value running(footer) makes this HTML element float into the bottom left page margin
-box. This page margin box repeats on every page in case we would have a multi-page
-invoice.
-
-The content inside the footer is aligned with the help of line-height 3cm and a 
-flexbox for the child elements.
-*/
 footer{
   height:3cm;
   line-height:3cm;
   padding:0 2cm;
   position:running(footer);
   background-color:var(--footer-bg-color);
-  font-size:8pt;
+  font-size:14pt;
   display:flex;
-  align-items:baseline;
-  justify-content:space-between;
+  align-items:center;
+  justify-content:center;
 }
 
 /*

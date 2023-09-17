@@ -1,75 +1,46 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const calculateButton = document.getElementById("calculate");
-  calculateButton.addEventListener("click", calculateCosineLaw);
+function updateDiagram() {
+  const sideA = parseFloat(document.getElementById('sideA').value) || 0;
+  const sideB = parseFloat(document.getElementById('sideB').value) || 0;
+  const sideC = parseFloat(document.getElementById('sideC').value) || 0;
 
-  function calculateCosineLaw() {
-    const sideA = parseFloat(document.getElementById("sideA").value);
-    const sideB = parseFloat(document.getElementById("sideB").value);
-    const sideC = parseFloat(document.getElementById("sideC").value);
+  const maxSide = Math.max(sideA, sideB, sideC);
+  const scaleFactor = maxSide > 0 ? 80 / maxSide : 1;
 
-    if (
-      isNaN(sideA) ||
-      isNaN(sideB) ||
-      isNaN(sideC) ||
-      sideA <= 0 ||
-      sideB <= 0 ||
-      sideC <= 0
-    ) {
-      displayResult("Please enter valid positive values for all sides.");
-      return;
-    }
+  const scaledSideA = sideA * scaleFactor;
+  const scaledSideB = sideB * scaleFactor;
+  const scaledSideC = sideC * scaleFactor;
+  const fontSize = 10 + scaleFactor * 3;
 
-    // Check if input sides can form a valid triangle
-    if (
-      sideA + sideB <= sideC ||
-      sideA + sideC <= sideB ||
-      sideB + sideC <= sideA
-    ) {
-      displayResult("These sides cannot form a valid triangle.");
-      return;
-    }
+  const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 250 200">
+          <polygon points="10,100 190,100 190,${100 - scaledSideA}" class="side" id="sideAHighlight"/>
+          <text x="205" y="${100 - scaledSideA / 2}" text-anchor="middle" dy="0.7em" font-size="${fontSize}px">${sideA.toFixed(0)}</text>
+          <text x="90" y="${85  + scaledSideA / 2}" text-anchor="middle" dy="0.7em" font-size="${fontSize}px">${sideB.toFixed(0)}</text>
+          <text x="80" y="${90 - scaledSideA / 2}" text-anchor="middle" dy="0.7em" font-size="${fontSize}px">${sideC.toFixed(0)}</text>
+      </svg>
+  `;
 
-    const angleCInRadians = Math.acos(
-      (Math.pow(sideA, 2) + Math.pow(sideB, 2) - Math.pow(sideC, 2)) /
-        (2 * sideA * sideB)
-    );
-    const angleCInDegrees = (angleCInRadians * 180) / Math.PI;
+  document.getElementById('triangleDiagram').innerHTML = svg;
+  highlightSides();
+}
 
-    displayResult(`Angle C ≈ ${angleCInDegrees.toFixed(2)} degrees`);
+function calculate() {
+  const sideA = parseFloat(document.getElementById('sideA').value);
+  const sideB = parseFloat(document.getElementById('sideB').value);
+  const sideC = parseFloat(document.getElementById('sideC').value);
+
+  if (!isNaN(sideA) && !isNaN(sideB) && !isNaN(sideC)) {
+      const angleCRadians = Math.acos((Math.pow(sideA, 2) + Math.pow(sideB, 2) - Math.pow(sideC, 2)) / (2 * sideA * sideB));
+      const angleC = (angleCRadians * 180) / Math.PI;
+      document.getElementById('result').textContent = angleC.toFixed(2) + '°'; 
+  } else {
+      document.getElementById('result').textContent = 'Invalid input';
   }
+}
 
-  function displayResult(resultText) {
-    const resultDiv = document.getElementById("result");
-    resultDiv.textContent = resultText;
-  }
-});
+updateDiagram();
 
-document
-  .getElementById("calculate")
-  .addEventListener("click", function () {
-    // Get input values
-    const sideA = parseFloat(document.getElementById("sideA").value);
-    const sideC = parseFloat(document.getElementById("sideC").value);
 
-    // Check if input values are valid
-    if (!isNaN(sideA) && !isNaN(sideC)) {
-      // Calculate angle C (in radians)
-      const angleC = (sideC * Math.PI) / 180;
-
-      // Calculate side B using the Sine Law
-      const sideB =
-        (sideA * Math.sin(angleC)) / Math.sin(Math.PI - angleC);
-
-      // Display the result
-      document.getElementById(
-        "result"
-      ).innerHTML = `Side B: ${sideB.toFixed(2)}`;
-    } else {
-      // Display an error message if the inputs are not valid
-      document.getElementById("result").innerHTML =
-        "Please enter valid numbers for Side A and Side C.";
-    }
-  });
 
 document
   .getElementById("sineLawForm")
@@ -163,17 +134,5 @@ document
     pdf.save("Right Angle Module Report.pdf");
   });
 
-document
-  .getElementById("recallResultButton")
-  .addEventListener("click", function () {
-    const calculationResult =
-      document.getElementById("result").textContent;
 
-    const angleValue = parseFloat(calculationResult.split(" ")[2]);
-
-    if (!isNaN(angleValue)) {
-      document.getElementById("angleA").value = angleValue;
-    } else {
-      alert("Error: Unable to recall the angle value.");
-    }
-  });
+  

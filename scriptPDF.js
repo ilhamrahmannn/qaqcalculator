@@ -1,4 +1,4 @@
- // JavaScript to set the date in the currentDateTime element
+
  function setCurrentDate() {
     const currentDate = new Date();
     const day = String(currentDate.getDate()).padStart(2, '0');
@@ -8,5 +8,5 @@
     document.getElementById('currentDateTime').textContent = formattedDate;
   }
 
-  // Call the function to set the current date when the page loads
   setCurrentDate();
+
